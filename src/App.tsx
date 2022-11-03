@@ -1,5 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import List from './components/List'
+import UserItem from './components/UserItem'
 import UserList from './components/UserList'
 import './styles/app.scss'
 import { IUser } from './types/types'
@@ -17,7 +19,15 @@ function App() {
 
   return (
     <div className="App">
-      <UserList users={users} />
+      <List
+        items={users}
+        renderItem={(user: IUser) => (
+          <UserItem
+            user={user}
+            key={user.id}
+          />
+        )}
+      />
     </div>
   )
 }
